@@ -167,6 +167,97 @@
       color: white;
       cursor: pointer;
     }
+    .chat-container {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 360px;
+  height: 520px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+  color: white;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-title img {
+  width: 25px;
+}
+
+.messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.bot-avatar {
+  width: 30px;
+  margin-right: 8px;
+}
+
+.bot-bubble {
+  background: #fce7f3;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 75%;
+  font-size: 14px;
+}
+
+.user-row {
+  justify-content: flex-end;
+}
+
+.user-bubble {
+  background: #ec4899;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 75%;
+  font-size: 14px;
+}
+
+.input-area form {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  background: #ec4899;
+  color: white;
+  cursor: pointer;
+}
+
   </style>
 </head>
 
@@ -219,12 +310,15 @@
 
 <!-- CHATBOT -->
 <div class="chat-toggle" onclick="openChat()">
-  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+  <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" />
 </div>
 
 <div class="chat-container" id="chatBox">
   <div class="chat-header">
-    🤖 Keerthana AI
+    <div class="chat-title">
+      <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" />
+      <span>Keerthana AI</span>
+    </div>
     <span onclick="closeChat()" style="cursor:pointer;">✕</span>
   </div>
 
@@ -238,6 +332,7 @@
   </div>
 </div>
 
+
 <script>
 const chatBox = document.getElementById("chatBox");
 const messages = document.getElementById("messages");
@@ -246,8 +341,9 @@ const input = document.getElementById("userInput");
 
 function openChat() {
   chatBox.style.display = "flex";
+
   if (messages.innerHTML === "") {
-    messages.innerHTML += `<div class="bot">Hey 👋 How are you? Ask me about my experience!</div>`;
+    addBotMessage("Hey 👋 How are you? Ask me about my experience!");
   }
 }
 
@@ -255,12 +351,29 @@ function closeChat() {
   chatBox.style.display = "none";
 }
 
+function addBotMessage(text) {
+  messages.innerHTML += `
+    <div class="message-row">
+      <img class="bot-avatar" src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+      <div class="bot-bubble">${text}</div>
+    </div>
+  `;
+}
+
+function addUserMessage(text) {
+  messages.innerHTML += `
+    <div class="message-row user-row">
+      <div class="user-bubble">${text}</div>
+    </div>
+  `;
+}
+
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
   const text = input.value.trim();
   if (!text) return;
 
-  messages.innerHTML += `<div class="user">${text}</div>`;
+  addUserMessage(text);
   input.value = "";
 
   try {
@@ -271,13 +384,14 @@ form.addEventListener("submit", async function(e) {
     });
 
     const data = await response.json();
-    messages.innerHTML += `<div class="bot">${data.response}</div>`;
-  } catch (error) {
-    messages.innerHTML += `<div class="bot">⚠️ AI temporarily unavailable.</div>`;
+    addBotMessage(data.response);
+  } catch {
+    addBotMessage("⚠️ Something went wrong. Please try again.");
   }
 
   messages.scrollTop = messages.scrollHeight;
 });
+
 </script>
 
 </body>
