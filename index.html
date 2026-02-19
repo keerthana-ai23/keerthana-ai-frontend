@@ -3,24 +3,44 @@
 <head>
   <title>Keerthana AI Resume</title>
   <meta charset="UTF-8" />
+
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
       background: #f4f6f8;
+    }
+
+    /* Chat Bubble Button */
+    .chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #2563eb;
+      color: white;
+      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
     }
 
+    /* Chat Window */
     .chat-container {
-      width: 400px;
-      height: 600px;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
       background: white;
       border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      display: flex;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      display: none;
       flex-direction: column;
       overflow: hidden;
     }
@@ -37,10 +57,11 @@
       flex: 1;
       padding: 15px;
       overflow-y: auto;
+      font-size: 14px;
     }
 
     .message {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.4;
     }
 
@@ -55,13 +76,9 @@
       color: #111827;
     }
 
-    .input-area {
-      border-top: 1px solid #eee;
-    }
-
     .input-area form {
       display: flex;
-      width: 100%;
+      border-top: 1px solid #eee;
     }
 
     input {
@@ -69,34 +86,30 @@
       padding: 12px;
       border: none;
       outline: none;
-      font-size: 14px;
     }
 
     button {
-      padding: 12px 20px;
+      padding: 12px 16px;
       border: none;
       background: #2563eb;
       color: white;
       cursor: pointer;
-      font-weight: 500;
     }
 
     button:hover {
       background: #1d4ed8;
     }
-
-    button:disabled {
-      background: #9ca3af;
-      cursor: not-allowed;
-    }
   </style>
 </head>
 
 <body>
-  <div class="chat-container">
-    <div class="header">
-      🤖 Ask Keerthana's AI Resume
-    </div>
+
+  <!-- Chat Toggle Button -->
+  <div class="chat-toggle" onclick="toggleChat()">💬</div>
+
+  <!-- Chat Container -->
+  <div class="chat-container" id="chatBox">
+    <div class="header">🤖 Keerthana AI Assistant</div>
 
     <div class="messages" id="messages"></div>
 
@@ -105,19 +118,38 @@
         <input 
           type="text" 
           id="userInput" 
-          placeholder="Ask about experience..." 
+          placeholder="Ask me anything..." 
           autocomplete="off"
         />
-        <button type="submit" id="sendBtn">Send</button>
+        <button type="submit">Send</button>
       </form>
     </div>
   </div>
 
   <script>
+    const chatBox = document.getElementById("chatBox");
+    const messages = document.getElementById("messages");
     const form = document.getElementById("chatForm");
     const input = document.getElementById("userInput");
-    const messages = document.getElementById("messages");
-    const sendBtn = document.getElementById("sendBtn");
+
+    let firstOpen = true;
+
+    function toggleChat() {
+      if (chatBox.style.display === "flex") {
+        chatBox.style.display = "none";
+      } else {
+        chatBox.style.display = "flex";
+
+        if (firstOpen) {
+          messages.innerHTML += `
+            <div class="message bot">
+              Hello 👋 How can I assist you today?
+            </div>
+          `;
+          firstOpen = false;
+        }
+      }
+    }
 
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
@@ -125,14 +157,8 @@
       const userText = input.value.trim();
       if (!userText) return;
 
-      // Show user message
       messages.innerHTML += `<div class="message user">${userText}</div>`;
       input.value = "";
-      sendBtn.disabled = true;
-
-      // Show loading indicator
-      const loadingId = Date.now();
-      messages.innerHTML += `<div class="message bot" id="loading-${loadingId}">Typing...</div>`;
       messages.scrollTop = messages.scrollHeight;
 
       try {
@@ -146,20 +172,14 @@
 
         const data = await response.json();
 
-        // Remove loading message
-        document.getElementById(`loading-${loadingId}`).remove();
-
-        // Show bot response
         messages.innerHTML += `<div class="message bot">${data.response}</div>`;
         messages.scrollTop = messages.scrollHeight;
 
       } catch (error) {
-        document.getElementById(`loading-${loadingId}`).remove();
-        messages.innerHTML += `<div class="message bot">⚠️ Connection error. Please try again.</div>`;
+        messages.innerHTML += `<div class="message bot">⚠️ Connection error.</div>`;
       }
-
-      sendBtn.disabled = false;
     });
   </script>
+
 </body>
 </html>
