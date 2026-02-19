@@ -88,8 +88,11 @@
     <div class="messages" id="messages"></div>
 
     <div class="input-area">
-      <input type="text" id="userInput" placeholder="Ask about experience..." />
-      <button onclick="sendMessage()">Send</button>
+      <form onsubmit="sendMessage(); return false;">
+    <input type="text" id="userInput" placeholder="Ask about experience..." />
+    <button type="submit">Send</button>
+</form>
+
     </div>
   </div>
 
