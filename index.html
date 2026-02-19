@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
-      background: #fff5f9;
+      background: #fff0f6;
     }
 
     /* Chat Toggle Button */
@@ -18,21 +18,22 @@
       right: 20px;
       width: 60px;
       height: 60px;
-      background: #ff69b4;
+      background: #f783ac;
       color: white;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 24px;
+      font-size: 22px;
       cursor: pointer;
-      box-shadow: 0 5px 20px rgba(255,105,180,0.4);
+      box-shadow: 0 6px 25px rgba(247,131,172,0.4);
       z-index: 1000;
-      transition: transform 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .chat-toggle:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
+      background: #e64980;
     }
 
     /* Chat Window */
@@ -40,37 +41,43 @@
       position: fixed;
       bottom: 90px;
       right: 20px;
-      width: 350px;
-      height: 500px;
+      width: 360px;
+      height: 520px;
       background: white;
       border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(255,105,180,0.3);
+      box-shadow: 0 20px 50px rgba(247,131,172,0.25);
       display: none;
       flex-direction: column;
       overflow: hidden;
-      animation: fadeIn 0.3s ease-in-out;
+      animation: slideUp 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .header {
-      background: #ff69b4;
+      background: #f783ac;
       color: white;
       padding: 15px;
       text-align: center;
-      font-weight: bold;
+      font-weight: 600;
       position: relative;
+      letter-spacing: 0.5px;
     }
 
     .close-btn {
       position: absolute;
       right: 15px;
-      top: 10px;
+      top: 12px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    .close-btn:hover {
+      opacity: 1;
     }
 
     .messages {
@@ -78,27 +85,35 @@
       padding: 15px;
       overflow-y: auto;
       font-size: 14px;
+      background: #fff9fb;
     }
 
     .message {
-      margin-bottom: 10px;
-      line-height: 1.4;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      display: inline-block;
     }
 
     .user {
-      text-align: right;
-      color: #d63384;
-      font-weight: 500;
+      background: #ffe3ec;
+      color: #c2255c;
+      align-self: flex-end;
+      margin-left: auto;
     }
 
     .bot {
-      text-align: left;
-      color: #333;
+      background: #f8d7e3;
+      color: #862e9c;
+      align-self: flex-start;
     }
 
     .input-area form {
       display: flex;
-      border-top: 1px solid #eee;
+      border-top: 1px solid #f1c2d4;
+      background: white;
     }
 
     input {
@@ -106,42 +121,44 @@
       padding: 12px;
       border: none;
       outline: none;
+      font-size: 14px;
     }
 
     button {
       padding: 12px 16px;
       border: none;
-      background: #ff69b4;
+      background: #f783ac;
       color: white;
       cursor: pointer;
+      font-weight: 500;
     }
 
     button:hover {
-      background: #e754a3;
+      background: #e64980;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Chat Toggle Button -->
-  <div class="chat-toggle" onclick="openChat()">💖</div>
+  <!-- Toggle Button -->
+  <div class="chat-toggle" onclick="openChat()">Chat</div>
 
-  <!-- Chat Container -->
+  <!-- Chat Window -->
   <div class="chat-container" id="chatBox">
     <div class="header">
       Keerthana AI Assistant
-      <span class="close-btn" onclick="closeChat()">✖</span>
+      <span class="close-btn" onclick="closeChat()">✕</span>
     </div>
 
-    <div class="messages" id="messages"></div>
+    <div class="messages" id="messages" style="display:flex; flex-direction:column;"></div>
 
     <div class="input-area">
       <form id="chatForm">
         <input 
           type="text" 
           id="userInput" 
-          placeholder="Ask me anything..." 
+          placeholder="Ask about experience..." 
           autocomplete="off"
         />
         <button type="submit">Send</button>
@@ -163,7 +180,7 @@
       if (firstOpen) {
         messages.innerHTML += `
           <div class="message bot">
-            Hello 👋 I'm Keerthana's AI assistant. How can I help you today?
+            Hello 👋 I'm Keerthana's AI assistant. How can I assist you today?
           </div>
         `;
         firstOpen = false;
@@ -199,7 +216,7 @@
         messages.scrollTop = messages.scrollHeight;
 
       } catch (error) {
-        messages.innerHTML += `<div class="message bot">⚠️ Connection error.</div>`;
+        messages.innerHTML += `<div class="message bot">⚠️ Connection issue. Please try again.</div>`;
       }
     });
   </script>
