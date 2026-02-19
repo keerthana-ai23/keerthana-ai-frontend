@@ -28,9 +28,7 @@
       flex-wrap: wrap;
     }
 
-    .hero-text {
-      flex: 1;
-    }
+    .hero-text { flex: 1; }
 
     .hero img {
       width: 350px;
@@ -45,14 +43,9 @@
       margin-bottom: 20px;
     }
 
-    .highlight {
-      color: #ec4899;
-    }
+    .highlight { color: #ec4899; }
 
-    p {
-      color: #6b7280;
-      line-height: 1.7;
-    }
+    p { color: #6b7280; line-height: 1.7; }
 
     .btn {
       display: inline-block;
@@ -96,19 +89,6 @@
       font-size: 13px;
     }
 
-    .project-card {
-      margin-top: 25px;
-      padding: 25px;
-      border: 1px solid #f3f4f6;
-      border-radius: 14px;
-      transition: 0.3s ease;
-    }
-
-    .project-card:hover {
-      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-      transform: translateY(-4px);
-    }
-
     footer {
       text-align: center;
       padding: 40px;
@@ -116,13 +96,14 @@
       font-size: 14px;
     }
 
-    /* Chat Button */
+    /* CHATBOT */
+
     .chat-toggle {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ec4899, #f472b6);
       display: flex;
@@ -134,9 +115,8 @@
     }
 
     .chat-toggle img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      width: 45px;
+      height: 45px;
     }
 
     .chat-container {
@@ -147,7 +127,7 @@
       height: 520px;
       background: white;
       border-radius: 18px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
       display: none;
       flex-direction: column;
       overflow: hidden;
@@ -169,19 +149,15 @@
       font-size: 14px;
     }
 
-    .message {
-      margin-bottom: 12px;
-    }
+    .message { margin-bottom: 12px; }
 
     .user {
       text-align: right;
       color: #111827;
+      font-weight: 500;
     }
 
-    .bot {
-      text-align: left;
-      color: #6b7280;
-    }
+    .bot { text-align: left; color: #6b7280; }
 
     .input-area form {
       display: flex;
@@ -218,15 +194,15 @@
 
         <p>
           I design and deploy scalable LLM-powered applications,
-          intelligent data systems, and production-ready APIs using
-          Python, FastAPI, JavaScript, and cloud platforms.
+          intelligent APIs, and production AI systems using Python,
+          FastAPI, JavaScript, and cloud technologies.
         </p>
 
         <a href="#" class="btn btn-primary">Download Resume</a>
         <a href="#" class="btn btn-outline">View GitHub</a>
       </div>
 
-      <img src="profile.jpeg" alt="Keerthana Photo">
+      <img src="profile.jpeg" alt="Keerthana">
     </div>
 
     <h2>Technical Skills</h2>
@@ -238,28 +214,73 @@
       <div class="skill">OpenAI API</div>
       <div class="skill">Machine Learning</div>
       <div class="skill">SQL</div>
-      <div class="skill">Cassandra</div>
       <div class="skill">AWS</div>
       <div class="skill">LLM Applications</div>
     </div>
-
-    <h2>Featured Projects</h2>
-
-    <div class="project-card">
-      <strong>AI Resume Assistant (Live)</strong>
-      <p>Full-stack GenAI chatbot deployed using FastAPI backend and modern JavaScript frontend. Integrated OpenAI API for contextual resume Q&A.</p>
-    </div>
-
-    <div class="project-card">
-      <strong>Big Data Medallion Pipeline</strong>
-      <p>Designed scalable Bronze-Silver-Gold architecture using Cassandra and AstraDB for analytics workloads.</p>
-    </div>
-
   </div>
 
   <footer>
     © 2026 Keerthana Bellam • Built with AI
   </footer>
+
+  <!-- FLOATING ROBOT BUTTON -->
+  <div class="chat-toggle" onclick="openChat()">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+  </div>
+
+  <!-- CHAT WINDOW -->
+  <div class="chat-container" id="chatBox">
+    <div class="chat-header">
+      🤖 Keerthana AI
+      <span onclick="closeChat()" style="cursor:pointer;">✕</span>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="input-area">
+      <form id="chatForm">
+        <input type="text" id="userInput" placeholder="Ask me anything..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chatBox");
+    const messages = document.getElementById("messages");
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("userInput");
+
+    function openChat() {
+      chatBox.style.display = "flex";
+      if (messages.innerHTML === "") {
+        messages.innerHTML += `<div class="message bot">Hey 👋 How are you? Ask me about my experience!</div>`;
+      }
+    }
+
+    function closeChat() {
+      chatBox.style.display = "none";
+    }
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+
+      messages.innerHTML += `<div class="message user">${text}</div>`;
+      input.value = "";
+
+      const response = await fetch("https://keerthana-ai-backend-1.onrender.com/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await response.json();
+      messages.innerHTML += `<div class="message bot">${data.response}</div>`;
+      messages.scrollTop = messages.scrollHeight;
+    });
+  </script>
 
 </body>
 </html>
