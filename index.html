@@ -314,24 +314,34 @@ document.getElementById("chatInput").addEventListener("keypress", function(e) {
   }
 });
 
+function scrollToBottom() {
+  const messages = document.getElementById("chatMessages");
+  messages.scrollTop = messages.scrollHeight;
+}
+
 function addUserMessage(text) {
   const messages = document.getElementById("chatMessages");
+
   messages.innerHTML += `
     <div class="user-message">
       <div class="bubble">${text}</div>
     </div>
   `;
+
+  scrollToBottom();
 }
 
 function addBotMessage(text) {
   const messages = document.getElementById("chatMessages");
+
   messages.innerHTML += `
     <div class="bot-message">
       <div class="avatar">🤖</div>
       <div class="bubble">${text}</div>
     </div>
   `;
-  messages.scrollTop = messages.scrollHeight;
+
+  scrollToBottom();
 }
 
 function sendMessage() {
