@@ -88,7 +88,16 @@ section {
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(236,72,153,0.3);
 }
+.strip {
+  background: #fce7f3;
+  padding: 60px 80px;
+  text-align: center;
+}
 
+.strip h3 {
+  color: #ec4899;
+  margin-bottom: 10px;
+}
 .highlight {
   color: #ec4899;
 }
@@ -102,7 +111,42 @@ section {
   margin: 6px;
   font-size: 14px;
 }
+.project-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
 
+.project-card {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(236,72,153,0.15);
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+  section:nth-child(even) {
+  background: #fafafa;
+}
+  section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: #ec4899;
+  display: block;
+  margin-top: 8px;
+}
 /* CONTACT */
 
 .contact a {
@@ -267,14 +311,21 @@ section {
 
   <img src="profile.jpeg" alt="Keerthana">
 </section>
+  <section class="strip">
+  <div class="strip-content">
+    <h3>Building Real-World AI Systems</h3>
+    <p>FastAPI • OpenAI API • Production Deployment • Cloud Infrastructure</p>
+  </div>
+</section>
 
 <section id="about">
   <h2>About Me</h2>
   <br>
   <p>
-    I am a Data Science graduate student focused on Generative AI, LLM-powered applications,
-    backend systems using FastAPI, and production AI deployment.
-  </p>
+I specialize in building production-ready Generative AI systems using FastAPI and OpenAI APIs. 
+My focus is on scalable backend architectures, LLM-powered applications, and real-world deployment. 
+I enjoy transforming AI concepts into fully deployed interactive systems.
+</p>
 </section>
 
 <section id="skills">
@@ -289,6 +340,21 @@ section {
     <span>Machine Learning</span>
     <span>SQL</span>
     <span>AWS</span>
+  </div>
+</section>
+  <section id="projects">
+  <h2>Projects</h2>
+  <br>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>AI Resume Chatbot</h3>
+      <p>Built with FastAPI and OpenAI API. Deployed using Render and Netlify. Real-time LLM-powered conversation system.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>LLM Backend Deployment</h3>
+      <p>Production-ready API using FastAPI with CORS handling, OpenAI integration, and cloud deployment pipeline.</p>
+    </div>
   </div>
 </section>
 
