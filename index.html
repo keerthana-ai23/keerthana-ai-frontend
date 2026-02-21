@@ -101,6 +101,53 @@ section {
 .highlight {
   color: #ec4899;
 }
+  .about-header {
+  background: #fce7f3;
+  padding: 120px 80px;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.about-container img {
+  width: 220px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(236,72,153,0.2);
+}
+
+.about-text h2 {
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.about-text h4 {
+  color: #ec4899;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  max-width: 500px;
+  line-height: 1.6;
+}
+  .story {
+  padding: 100px 80px;
+  background: white;
+}
+
+.story-container {
+  max-width: 800px;
+}
+
+.highlight-box {
+  background: #ec4899;
+  color: white;
+  padding: 15px 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
 
 .skills span {
   display: inline-block;
@@ -318,14 +365,36 @@ section h2::after {
   </div>
 </section>
 
-<section id="about">
-  <h2>About Me</h2>
-  <br>
-  <p>
-I specialize in building production-ready Generative AI systems using FastAPI and OpenAI APIs. 
-My focus is on scalable backend architectures, LLM-powered applications, and real-world deployment. 
-I enjoy transforming AI concepts into fully deployed interactive systems.
-</p>
+<section class="about-header">
+  <div class="about-container">
+    <img src="profile.jpeg" alt="Keerthana">
+    
+    <div class="about-text">
+      <h2>Keerthana Bellam</h2>
+      <h4>Generative AI Engineer</h4>
+      <p>
+        I design and build production-ready AI systems using FastAPI,
+        OpenAI APIs, and cloud deployment platforms.
+        My focus is on scalable LLM-powered applications and backend systems.
+      </p>
+    </div>
+  </div>
+</section>
+  <section class="story">
+  <div class="story-container">
+    <h2>My Journey</h2>
+    <p>
+      I transitioned into Generative AI with a focus on building
+      real-world AI applications. From backend API design to LLM
+      integrations and cloud deployment, I enjoy turning AI ideas
+      into working production systems.
+    </p>
+
+    <div class="highlight-box">
+      Building scalable AI systems is not just about models —
+      it's about architecture, deployment, and user interaction.
+    </div>
+  </div>
 </section>
 
 <section id="skills">
