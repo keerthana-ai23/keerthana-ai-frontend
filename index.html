@@ -197,98 +197,123 @@ section h2::after {
 /* CONTACT */
 
 .contact-section {
-  padding: 120px 80px;
-  background: #fce7f3;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 80px;
+  background: linear-gradient(to bottom, #fff, #fce7f3);
 }
 
-.contact-container {
+.contact-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
   display: flex;
-  gap: 80px;
-  align-items: flex-start;
   justify-content: space-between;
+  align-items: center;
+  gap: 80px;
 }
+
+/* LEFT SIDE */
 
 .contact-info {
   flex: 1;
 }
 
 .contact-info h2 {
-  font-size: 32px;
+  font-size: 36px;
   margin-bottom: 10px;
 }
 
-.contact-info .subtitle {
-  color: #ec4899;
+.underline {
+  width: 60px;
+  height: 4px;
+  background: #ec4899;
   margin-bottom: 20px;
-  font-weight: 500;
+  border-radius: 5px;
 }
 
-.contact-info p {
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-.contact-info a {
+.subtitle {
   color: #ec4899;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.description {
+  margin-bottom: 25px;
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
   text-decoration: none;
-}
-
-.social-links a {
-  display: inline-block;
-  margin-right: 15px;
-  margin-top: 10px;
+  color: #111;
   font-weight: 500;
+  transition: 0.3s;
 }
 
-.contact-form {
+.contact-links a:hover {
+  color: #ec4899;
+}
+
+/* RIGHT SIDE */
+
+.contact-form-box {
   flex: 1;
   background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(236,72,153,0.15);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(236,72,153,0.2);
 }
 
-.contact-form form {
+.contact-form-box form {
   display: flex;
   flex-direction: column;
 }
 
-.contact-form .row {
+.contact-form-box .row {
   display: flex;
   gap: 15px;
   margin-bottom: 15px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form-box input,
+.contact-form-box textarea {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
+  border-radius: 10px;
   border: 1px solid #ddd;
-  border-radius: 8px;
   font-size: 14px;
+  transition: 0.3s;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form-box input:focus,
+.contact-form-box textarea:focus {
   border-color: #ec4899;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(236,72,153,0.2);
 }
 
-.contact-form button {
+.contact-form-box button {
   margin-top: 15px;
-  padding: 12px;
+  padding: 14px;
+  border-radius: 10px;
   border: none;
   background: #ec4899;
   color: white;
-  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
-.contact-form button:hover {
+.contact-form-box button:hover {
   background: #db2777;
+  transform: translateY(-2px);
 }
-
 /* CHATBOT */
 
 .chat-toggle {
@@ -514,31 +539,37 @@ section h2::after {
 </section>
 
 <section id="contact" class="contact-section">
-  <div class="contact-container">
+  <div class="contact-wrapper">
 
     <!-- LEFT SIDE -->
     <div class="contact-info">
       <h2>Get in Touch</h2>
+      <div class="underline"></div>
+
       <p class="subtitle">I'd love to hear from you!</p>
-      <p>
+
+      <p class="description">
         If you have any questions, opportunities, or just want to say hi,
         feel free to reach out using the form.
       </p>
 
-      <div class="contact-details">
-        <p>📧 <a href="mailto:keerthanabellam23@gmail.com">
-          keerthanabellam23@gmail.com
-        </a></p>
+      <div class="contact-links">
+        <a href="mailto:keerthanabellam23@gmail.com">
+          📧 <span>keerthanabellam23@gmail.com</span>
+        </a>
 
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/keerthanabellam1/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/keerthana-ai23" target="_blank">GitHub</a>
-        </div>
+        <a href="https://www.linkedin.com/in/keerthanabellam1/" target="_blank">
+          💼 <span>LinkedIn</span>
+        </a>
+
+        <a href="https://github.com/keerthana-ai23" target="_blank">
+          💻 <span>GitHub</span>
+        </a>
       </div>
     </div>
 
-    <!-- RIGHT SIDE FORM -->
-    <div class="contact-form">
+    <!-- RIGHT SIDE -->
+    <div class="contact-form-box">
       <form>
         <div class="row">
           <input type="text" placeholder="First Name" required>
@@ -548,7 +579,7 @@ section h2::after {
         <input type="email" placeholder="Email" required>
         <textarea placeholder="Message" rows="5" required></textarea>
 
-        <button type="submit">Send</button>
+        <button type="submit">Send Message</button>
       </form>
     </div>
 
