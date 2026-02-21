@@ -183,12 +183,32 @@ section {
   color: #ec4899;
 }
 
-.bot {
-  text-align: left;
-  margin: 5px 0;
+.bot-message, .user-message {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-end;
+}
+
+.bot-message .avatar {
+  font-size: 22px;
+  margin-right: 8px;
+}
+
+.bubble {
   background: #fce7f3;
-  padding: 6px 10px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 70%;
+}
+
+.user-message {
+  justify-content: flex-end;
+}
+
+.user-message .bubble {
+  background: #ec4899;
+  color: white;
+}
 }
 </style>
 </head>
@@ -253,18 +273,30 @@ section {
 
 <!-- CHATBOT -->
 
+<!-- CHATBOT -->
 <div class="chat-toggle" onclick="toggleChat()">🤖</div>
 
 <div class="chatbox" id="chatbox">
   <div class="chat-header">
-    Keerthana AI
+    <span>🤖 Keerthana AI</span>
     <span style="cursor:pointer;" onclick="toggleChat()">✕</span>
   </div>
+
   <div class="chat-messages" id="chatMessages">
-    <div class="bot">Hey 👋 I'm Keerthana's AI. How can I help you today?</div>
+    <div class="bot-message">
+      <div class="avatar">🤖</div>
+      <div class="bubble">
+        Hey 👋 I'm Keerthana's AI. How can I help you today?
+      </div>
+    </div>
   </div>
+
   <div class="chat-input">
-    <input type="text" id="chatInput" placeholder="Ask me anything..." />
+    <input 
+      type="text" 
+      id="chatInput" 
+      placeholder="Ask about experience..."
+    />
     <button onclick="sendMessage()">Send</button>
   </div>
 </div>
@@ -276,27 +308,51 @@ function toggleChat() {
   box.style.flexDirection = "column";
 }
 
+document.getElementById("chatInput").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
+});
+
+function addUserMessage(text) {
+  const messages = document.getElementById("chatMessages");
+  messages.innerHTML += `
+    <div class="user-message">
+      <div class="bubble">${text}</div>
+    </div>
+  `;
+}
+
+function addBotMessage(text) {
+  const messages = document.getElementById("chatMessages");
+  messages.innerHTML += `
+    <div class="bot-message">
+      <div class="avatar">🤖</div>
+      <div class="bubble">${text}</div>
+    </div>
+  `;
+  messages.scrollTop = messages.scrollHeight;
+}
+
 function sendMessage() {
   const input = document.getElementById("chatInput");
-  const messages = document.getElementById("chatMessages");
   const text = input.value.trim();
   if (!text) return;
 
-  messages.innerHTML += `<div class="user">${text}</div>`;
+  addUserMessage(text);
   input.value = "";
 
   fetch("https://keerthana-ai-backend-1.onrender.com/chat", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message: text })
   })
   .then(res => res.json())
   .then(data => {
-    messages.innerHTML += `<div class="bot">${data.response}</div>`;
-    messages.scrollTop = messages.scrollHeight;
+    addBotMessage(data.response);
   })
   .catch(() => {
-    messages.innerHTML += `<div class="bot">⚠ Something went wrong.</div>`;
+    addBotMessage("⚠ Backend is not responding right now.");
   });
 }
 </script>
