@@ -154,11 +154,31 @@ section {
 }
 
 .chat-messages {
-  padding: 10px;
-  height: 250px;
+  flex: 1;
   overflow-y: auto;
+  padding: 12px;
+  scrollbar-width: thin;              /* Firefox */
+  scrollbar-color: #ec4899 #f3f4f6;    /* Firefox */
 }
 
+/* Chrome / Edge / Safari */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #ec4899;
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #db2777;
+}
 .chat-input {
   display: flex;
 }
