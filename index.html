@@ -196,11 +196,97 @@ section h2::after {
 }
 /* CONTACT */
 
-.contact a {
-  display: block;
-  margin: 10px 0;
+.contact-section {
+  padding: 120px 80px;
+  background: #fce7f3;
+}
+
+.contact-container {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.contact-info .subtitle {
+  color: #ec4899;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.contact-info a {
   color: #ec4899;
   text-decoration: none;
+}
+
+.social-links a {
+  display: inline-block;
+  margin-right: 15px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.contact-form {
+  flex: 1;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(236,72,153,0.15);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form .row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ec4899;
+  outline: none;
+}
+
+.contact-form button {
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  background: #ec4899;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #db2777;
 }
 
 /* CHATBOT */
@@ -427,14 +513,47 @@ section h2::after {
   </div>
 </section>
 
-<section id="contact" class="contact">
-  <h2>Contact</h2>
-  <br>
-  <a href="mailto:keerthanabellam23@gmail.com">Email Me</a>
-  <a href="https://www.linkedin.com/in/keerthanabellam1/" target="_blank">LinkedIn</a>
-  <a href="https://github.com/keerthana-ai23" target="_blank">GitHub</a>
-</section>
+<section id="contact" class="contact-section">
+  <div class="contact-container">
 
+    <!-- LEFT SIDE -->
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p class="subtitle">I'd love to hear from you!</p>
+      <p>
+        If you have any questions, opportunities, or just want to say hi,
+        feel free to reach out using the form.
+      </p>
+
+      <div class="contact-details">
+        <p>📧 <a href="mailto:keerthanabellam23@gmail.com">
+          keerthanabellam23@gmail.com
+        </a></p>
+
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/keerthanabellam1/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/keerthana-ai23" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="contact-form">
+      <form>
+        <div class="row">
+          <input type="text" placeholder="First Name" required>
+          <input type="text" placeholder="Last Name" required>
+        </div>
+
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+  </div>
+</section>
 <!-- CHATBOT -->
 
 <!-- CHATBOT -->
