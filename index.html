@@ -165,61 +165,44 @@ section {
   background: linear-gradient(to bottom, #ffffff, #fafafa);
 }
 
-.section-title {
-  font-size: 32px;
-  margin-bottom: 50px;
-  position: relative;
-}
-
-.section-title::after {
-  content: "";
-  width: 60px;
-  height: 4px;
-  background: #ec4899;
-  position: absolute;
-  bottom: -12px;
-  left: 0;
-  border-radius: 10px;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-}
-
-.project-card {
-  background: white;
-  padding: 35px;
-  border-radius: 22px;
-  box-shadow: 0 20px 45px rgba(236,72,153,0.08);
-  transition: all 0.35s ease;
-  border: 1px solid #fce7f3;
+.projects-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 35px;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(236,72,153,0.18);
-  border: 1px solid #ec4899;
+.project-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(236,72,153,0.08);
+  border: 1px solid #fce7f3;
+  transition: all 0.3s ease;
+}
+
+.project-row:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(236,72,153,0.15);
+  border-color: #ec4899;
 }
 
 .project-icon {
-  font-size: 30px;
-  margin-bottom: 15px;
+  font-size: 40px;
+  min-width: 60px;
 }
 
-.project-card h3 {
-  margin-bottom: 12px;
+.project-content h3 {
+  margin-bottom: 10px;
 }
 
-.project-card p {
+.project-content p {
   color: #555;
   font-size: 14px;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .tech-stack span {
@@ -229,26 +212,18 @@ section {
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
-  margin: 5px 6px 0 0;
-  transition: 0.2s;
+  margin-right: 8px;
+  margin-top: 6px;
 }
 
-.tech-stack span:hover {
-  background: #ec4899;
-  color: white;
-}
-
-/* Large screens */
-@media (min-width: 1200px) {
-  .project-grid {
-    grid-template-columns: repeat(3, 1fr);
+/* Mobile */
+@media (max-width: 768px) {
+  .project-row {
+    flex-direction: column;
   }
-}
 
-/* Tablet */
-@media (max-width: 900px) {
-  .project-grid {
-    grid-template-columns: 1fr;
+  #projects {
+    padding: 120px 30px;
   }
 }
 /* CONTACT */
@@ -601,81 +576,90 @@ section {
   <section id="projects">
   <h2 class="section-title">Projects</h2>
 
-  <div class="project-grid">
+  <div class="projects-wrapper">
 
-    <div class="project-card">
+    <div class="project-row">
       <div class="project-icon">🤖</div>
-      <h3>AI Resume Assistant</h3>
-      <p>
-        Production-ready LLM chatbot built using FastAPI and OpenAI API.
-        Deployed with Render + Netlify with secure CORS handling and prompt engineering.
-      </p>
-      <div class="tech-stack">
-        <span>FastAPI</span>
-        <span>OpenAI</span>
-        <span>Render</span>
-        <span>Netlify</span>
+      <div class="project-content">
+        <h3>AI Resume Assistant</h3>
+        <p>
+          Production-ready LLM chatbot using FastAPI + OpenAI API.
+          Deployed with Render & Netlify with secure CORS handling.
+        </p>
+        <div class="tech-stack">
+          <span>FastAPI</span>
+          <span>OpenAI</span>
+          <span>Render</span>
+          <span>Netlify</span>
+        </div>
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-row">
       <div class="project-icon">📊</div>
-      <h3>Big Data Medallion Pipeline</h3>
-      <p>
-        Distributed system processing 100K+ records using Cassandra and Astra DB.
-        Implemented Bronze/Silver/Gold architecture for scalable analytics.
-      </p>
-      <div class="tech-stack">
-        <span>Cassandra</span>
-        <span>Astra DB</span>
-        <span>ETL</span>
+      <div class="project-content">
+        <h3>Big Data Medallion Pipeline</h3>
+        <p>
+          Cassandra + Astra DB pipeline processing 100K+ records using
+          Bronze/Silver/Gold architecture.
+        </p>
+        <div class="tech-stack">
+          <span>Cassandra</span>
+          <span>Astra DB</span>
+          <span>ETL</span>
+        </div>
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-row">
       <div class="project-icon">🌱</div>
-      <h3>FARM ERA 2.0</h3>
-      <p>
-        Smart farming analytics platform with Random Forest crop prediction
-        and TensorFlow-based pest detection.
-      </p>
-      <div class="tech-stack">
-        <span>Random Forest</span>
-        <span>TensorFlow</span>
-        <span>ML</span>
+      <div class="project-content">
+        <h3>FARM ERA 2.0</h3>
+        <p>
+          Smart farming ML platform using Random Forest
+          and TensorFlow-based pest detection.
+        </p>
+        <div class="tech-stack">
+          <span>Random Forest</span>
+          <span>TensorFlow</span>
+          <span>ML</span>
+        </div>
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-row">
       <div class="project-icon">🧠</div>
-      <h3>Health Welfare Analysis</h3>
-      <p>
-        Machine learning models (SVM, Logistic Regression)
-        to detect behavioral and healthcare patterns.
-      </p>
-      <div class="tech-stack">
-        <span>SVM</span>
-        <span>Python</span>
-        <span>ML</span>
+      <div class="project-content">
+        <h3>Health Welfare Analysis</h3>
+        <p>
+          SVM & Logistic Regression models for behavioral
+          and healthcare analytics.
+        </p>
+        <div class="tech-stack">
+          <span>SVM</span>
+          <span>Python</span>
+          <span>ML</span>
+        </div>
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-row">
       <div class="project-icon">💓</div>
-      <h3>Heart Rate Estimation (rPPG)</h3>
-      <p>
-        Deep learning-based non-contact heart rate monitoring
-        system using video signal processing.
-      </p>
-      <div class="tech-stack">
-        <span>Deep Learning</span>
-        <span>Signal Processing</span>
+      <div class="project-content">
+        <h3>Heart Rate Estimation (rPPG)</h3>
+        <p>
+          Deep learning-based non-contact heart rate monitoring
+          using video signal processing.
+        </p>
+        <div class="tech-stack">
+          <span>Deep Learning</span>
+          <span>Signal Processing</span>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
-
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function() {
