@@ -6,6 +6,9 @@
 <title>Keerthana Bellam | Generative AI Engineer</title>
 
 <style>
+
+/* ================= GLOBAL ================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -13,16 +16,14 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: #fff;
   color: #111827;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header {
   position: fixed;
@@ -36,9 +37,7 @@ header {
   z-index: 1000;
 }
 
-header h2 {
-  color: #ec4899;
-}
+header h2 { color: #ec4899; }
 
 nav a {
   margin-left: 25px;
@@ -47,30 +46,9 @@ nav a {
   font-weight: 500;
 }
 
-nav a:hover {
-  color: #ec4899;
-}
+nav a:hover { color: #ec4899; }
 
-/* BUTTON */
-
-.btn {
-  padding: 12px 22px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  border: 2px solid #ec4899;
-  color: #ec4899;
-  transition: all 0.3s ease;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.btn:hover {
-  background: #ec4899;
-  color: white;
-}
-
-/* SECTIONS */
+/* ================= HERO ================= */
 
 section {
   padding: 120px 80px;
@@ -88,20 +66,26 @@ section {
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(236,72,153,0.3);
 }
-.strip {
-  background: #fce7f3;
-  padding: 60px 80px;
-  text-align: center;
+
+.highlight { color: #ec4899; }
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 2px solid #ec4899;
+  color: #ec4899;
+  transition: 0.3s;
+  margin-right: 10px;
 }
 
-.strip h3 {
-  color: #ec4899;
-  margin-bottom: 10px;
+.btn:hover {
+  background: #ec4899;
+  color: white;
 }
-.highlight {
-  color: #ec4899;
-}
-/* ================= COMBINED ABOUT SECTION ================= */
+
+/* ================= ABOUT ================= */
 
 .about-section {
   padding: 140px 0;
@@ -112,15 +96,6 @@ section {
   max-width: 1100px;
   margin: auto;
   padding: 0 40px;
-  display: flex;
-  align-items: center;
-  gap: 80px;
-}
-
-.about-image img {
-  width: 300px;
-  border-radius: 30px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
 }
 
 .about-content h2 {
@@ -140,7 +115,6 @@ section {
   font-size: 16px;
 }
 
-/* Highlight Quote */
 .about-highlight {
   margin-top: 25px;
   padding: 22px 28px;
@@ -152,95 +126,7 @@ section {
   box-shadow: 0 20px 50px rgba(236,72,153,0.35);
 }
 
-/* Mobile */
-@media (max-width: 900px) {
-  .about-wrapper {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-image img {
-    width: 220px;
-  }
-}
-  .about-header {
-  background: #fce7f3;
-  padding: 120px 80px;
-}
-
-.about-container {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-}
-
-.about-container img {
-  width: 220px;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(236,72,153,0.2);
-}
-
-.about-text h2 {
-  color: #111827;
-  margin-bottom: 5px;
-}
-
-.about-text h4 {
-  color: #ec4899;
-  margin-bottom: 15px;
-}
-
-.about-text p {
-  max-width: 500px;
-  line-height: 1.6;
-}
-/* ================= JOURNEY SECTION ================= */
-
-.story {
-  padding: 140px 0;
-  background: linear-gradient(to bottom, #ffffff, #fce7f3);
-}
-
-.story-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 60px;
-  background: white;
-  border-radius: 28px;
-  box-shadow: 0 30px 80px rgba(236,72,153,0.08);
-}
-
-.story-container h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.story-container p {
-  font-size: 16px;
-  line-height: 1.7;
-  color: #555;
-}
-
-.highlight-box {
-  margin-top: 35px;
-  padding: 20px 25px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #ec4899, #db2777);
-  color: white;
-  font-weight: 500;
-  line-height: 1.6;
-  box-shadow: 0 15px 40px rgba(236,72,153,0.3);
-}
-  .story-container h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #ec4899;
-  margin-top: 12px;
-  border-radius: 10px;
-}
-/* ================= SKILLS SECTION ================= */
+/* ================= SKILLS ================= */
 
 #skills {
   padding: 120px 0;
@@ -263,7 +149,6 @@ section {
   margin-bottom: 60px;
 }
 
-/* 2 column layout */
 .skills-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -271,7 +156,6 @@ section {
 }
 
 .skills-category h3 {
-  color: #111827;
   margin-bottom: 15px;
   font-size: 18px;
 }
@@ -288,7 +172,7 @@ section {
   padding: 10px 18px;
   border-radius: 25px;
   font-size: 13px;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
 .skills-grid span:hover {
@@ -297,13 +181,9 @@ section {
   transform: translateY(-3px);
 }
 
-/* Mobile */
 @media (max-width: 900px) {
-  .skills-wrapper {
-    grid-template-columns: 1fr;
-  }
+  .skills-wrapper { grid-template-columns: 1fr; }
 }
-/* PROJECTS SECTION */
 
 /* ================= PROJECTS ================= */
 
@@ -315,7 +195,7 @@ section {
 .section-title {
   font-size: 32px;
   margin-bottom: 60px;
-  margin-left: 150px;
+  text-align: center;
   position: relative;
 }
 
@@ -326,11 +206,11 @@ section {
   background: #ec4899;
   position: absolute;
   bottom: -10px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 10px;
 }
 
-/* Centered wrapper */
 .project-grid {
   max-width: 950px;
   margin: auto;
@@ -339,22 +219,19 @@ section {
   gap: 50px;
 }
 
-/* Card design */
 .project-card {
   display: flex;
-  align-items: flex-start;
   gap: 25px;
-  background: white;
+  background: linear-gradient(to bottom, #ffffff, #fff7fb);
   padding: 45px;
   border-radius: 28px;
   border: 1px solid #f3cfe0;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 30px 70px rgba(236,72,153,0.15);
-  border-color: #ec4899;
 }
 
 .project-icon {
@@ -375,111 +252,27 @@ section {
 }
 
 .tech-stack span {
-  display: inline-block;
   background: #fce7f3;
   color: #ec4899;
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 13px;
   margin-right: 10px;
-  margin-top: 8px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-
-  .section-title {
-    margin-left: 30px;
-  }
-
-  .project-grid {
-    padding: 0 20px;
-  }
-
-  .project-card {
-    flex-direction: column;
-  }
-}
-/* CONTACT */
+/* ================= CONTACT ================= */
 
 .contact-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 100px 80px;
+  padding: 120px 80px;
   background: linear-gradient(to bottom, #fff, #fce7f3);
 }
 
 .contact-wrapper {
-  max-width: 1200px;
-  width: 100%;
+  max-width: 1100px;
   margin: auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 80px;
 }
-  /* Large screens */
-@media (min-width: 1200px) {
-  .project-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Tablet */
-@media (max-width: 900px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* LEFT SIDE */
-
-.contact-info {
-  flex: 1;
-}
-
-.contact-info h2 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-.underline {
-  width: 60px;
-  height: 4px;
-  background: #ec4899;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-
-.subtitle {
-  color: #ec4899;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.description {
-  margin-bottom: 25px;
-  line-height: 1.6;
-  max-width: 400px;
-}
-
-.contact-links a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  text-decoration: none;
-  color: #111;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.contact-links a:hover {
-  color: #ec4899;
-}
-
-/* RIGHT SIDE */
 
 .contact-form-box {
   flex: 1;
@@ -489,51 +282,7 @@ section {
   box-shadow: 0 25px 50px rgba(236,72,153,0.2);
 }
 
-.contact-form-box form {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-form-box .row {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.contact-form-box input,
-.contact-form-box textarea {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.contact-form-box input:focus,
-.contact-form-box textarea:focus {
-  border-color: #ec4899;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(236,72,153,0.2);
-}
-
-.contact-form-box button {
-  margin-top: 15px;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  background: #ec4899;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.contact-form-box button:hover {
-  background: #db2777;
-  transform: translateY(-2px);
-}
-/* CHATBOT */
+/* ================= CHATBOT ================= */
 
 .chat-toggle {
   position: fixed;
@@ -552,115 +301,58 @@ section {
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.chatbox {
-  position: fixed;
-  bottom: 100px;
-  right: 25px;
-  width: 320px;
-  height: 420px;   /* 🔥 THIS IS THE FIX */
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-}
-  
-.chat-header {
-  background: #ec4899;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-}
-
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 12px;
-  scrollbar-width: thin;              /* Firefox */
-  scrollbar-color: #ec4899 #f3f4f6;    /* Firefox */
-}
-
-/* Chrome / Edge / Safari */
-.chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: 12px;
-  scroll-behavior: smooth;
-}
-
-.chat-input {
-  display: flex;
-}
-
-.chat-input input {
-  flex: 1;
-  border: none;
-  padding: 10px;
-}
-
-.chat-input button {
-  background: #ec4899;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.user {
-  text-align: right;
-  margin: 5px 0;
-  color: #ec4899;
-}
-
-.bot-message, .user-message {
-  display: flex;
-  margin-bottom: 10px;
-  align-items: flex-end;
-}
-
-.bot-message .avatar {
-  font-size: 22px;
-  margin-right: 8px;
-}
-
-.bubble {
-  background: #fce7f3;
-  padding: 8px 12px;
-  border-radius: 15px;
-  max-width: 70%;
-}
-
-.user-message {
-  justify-content: flex-end;
-}
-
-.user-message .bubble {
-  background: #ec4899;
-  color: white;
-}
-}
-  .chatbox {
-  transition: all 0.3s ease;
-}
-
-.chatbox.open {
-  animation: popUp 0.25s ease;
-}
-
-@keyframes popUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 </style>
+</head>
+
+<body>
+
+<header>
+  <h2>Keerthana Bellam</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div>
+    <h1>Generative AI Engineer<br>
+    <span class="highlight">Building Production Systems.</span></h1><br>
+    <a href="resume.pdf" download class="btn">Download Resume</a>
+    <a href="https://github.com/keerthana-ai23" target="_blank" class="btn">GitHub</a>
+  </div>
+  <img src="profile.jpeg" alt="Keerthana">
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-wrapper">
+    <div class="about-content">
+      <h2>About</h2>
+      <h4>Generative AI Engineer</h4>
+
+      <p>
+        I build production-ready AI systems focused on scalability,
+        performance, and real-world usability.
+      </p>
+
+      <p>
+        I specialize in FastAPI backend design, LLM integration using OpenAI APIs,
+        and cloud deployment architecture.
+      </p>
+
+      <div class="about-highlight">
+        Building scalable AI systems is not just about models —
+        it's about architecture, deployment, performance, and user experience.
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
 </head>
 
 <body>
