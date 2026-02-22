@@ -161,7 +161,9 @@ section {
 /* PROJECTS SECTION */
 
 #projects {
-  padding: 140px 80px;
+ 
+  padding: 120px 120px;
+}
   background: linear-gradient(to bottom, #ffffff, #fafafa);
 }
 
@@ -184,10 +186,9 @@ section {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
-
 .project-card {
   background: white;
   padding: 35px;
@@ -301,6 +302,19 @@ section h2::after {
   justify-content: space-between;
   align-items: center;
   gap: 80px;
+}
+  /* Large screens */
+@media (min-width: 1200px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* LEFT SIDE */
