@@ -161,27 +161,25 @@ section {
 /* PROJECTS SECTION */
 
 #projects {
- 
-  padding: 120px 120px;
-}
+  padding: 140px 120px;
   background: linear-gradient(to bottom, #ffffff, #fafafa);
 }
 
 .section-title {
   font-size: 32px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   position: relative;
 }
 
 .section-title::after {
   content: "";
-  width: 50px;
+  width: 60px;
   height: 4px;
   background: #ec4899;
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   left: 0;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .project-grid {
@@ -189,6 +187,7 @@ section {
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 }
+
 .project-card {
   background: white;
   padding: 35px;
@@ -196,8 +195,9 @@ section {
   box-shadow: 0 20px 45px rgba(236,72,153,0.08);
   transition: all 0.35s ease;
   border: 1px solid #fce7f3;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-card:hover {
@@ -206,60 +206,13 @@ section {
   border: 1px solid #ec4899;
 }
 
-.project-card h3 {
-  margin-bottom: 15px;
-}
-
-.project-description {
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.tech-stack span {
-  display: inline-block;
-  background: #fce7f3;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  margin: 4px 6px 4px 0;
-}
-
-.project-buttons {
-  margin-top: 20px;
-}
-
-.project-btn {
-  text-decoration: none;
-  border: 2px solid #ec4899;
-  color: #ec4899;
-  padding: 8px 18px;
-  border-radius: 8px;
-  transition: 0.3s;
-  font-size: 14px;
-}
-
-.project-btn:hover {
-  background: #ec4899;
-  color: white;
-}
-
-  section h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-section h2::after {
-  content: "";
-  width: 50px;
-  height: 3px;
-  background: #ec4899;
-  display: block;
-  margin-top: 8px;
-}
-  .project-icon {
+.project-icon {
   font-size: 30px;
   margin-bottom: 15px;
+}
+
+.project-card h3 {
+  margin-bottom: 12px;
 }
 
 .project-card p {
@@ -283,6 +236,20 @@ section h2::after {
 .tech-stack span:hover {
   background: #ec4899;
   color: white;
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
 }
 /* CONTACT */
 
@@ -636,7 +603,6 @@ section h2::after {
 
   <div class="project-grid">
 
-    <!-- AI Resume Assistant -->
     <div class="project-card">
       <div class="project-icon">🤖</div>
       <h3>AI Resume Assistant</h3>
@@ -644,7 +610,6 @@ section h2::after {
         Production-ready LLM chatbot built using FastAPI and OpenAI API.
         Deployed with Render + Netlify with secure CORS handling and prompt engineering.
       </p>
-
       <div class="tech-stack">
         <span>FastAPI</span>
         <span>OpenAI</span>
@@ -653,7 +618,6 @@ section h2::after {
       </div>
     </div>
 
-    <!-- Big Data Pipeline -->
     <div class="project-card">
       <div class="project-icon">📊</div>
       <h3>Big Data Medallion Pipeline</h3>
@@ -661,7 +625,6 @@ section h2::after {
         Distributed system processing 100K+ records using Cassandra and Astra DB.
         Implemented Bronze/Silver/Gold architecture for scalable analytics.
       </p>
-
       <div class="tech-stack">
         <span>Cassandra</span>
         <span>Astra DB</span>
@@ -669,7 +632,6 @@ section h2::after {
       </div>
     </div>
 
-    <!-- FARM ERA -->
     <div class="project-card">
       <div class="project-icon">🌱</div>
       <h3>FARM ERA 2.0</h3>
@@ -677,7 +639,6 @@ section h2::after {
         Smart farming analytics platform with Random Forest crop prediction
         and TensorFlow-based pest detection.
       </p>
-
       <div class="tech-stack">
         <span>Random Forest</span>
         <span>TensorFlow</span>
@@ -685,7 +646,6 @@ section h2::after {
       </div>
     </div>
 
-    <!-- Health Welfare -->
     <div class="project-card">
       <div class="project-icon">🧠</div>
       <h3>Health Welfare Analysis</h3>
@@ -693,7 +653,6 @@ section h2::after {
         Machine learning models (SVM, Logistic Regression)
         to detect behavioral and healthcare patterns.
       </p>
-
       <div class="tech-stack">
         <span>SVM</span>
         <span>Python</span>
@@ -701,7 +660,6 @@ section h2::after {
       </div>
     </div>
 
-    <!-- Heart Rate -->
     <div class="project-card">
       <div class="project-icon">💓</div>
       <h3>Heart Rate Estimation (rPPG)</h3>
@@ -709,7 +667,6 @@ section h2::after {
         Deep learning-based non-contact heart rate monitoring
         system using video signal processing.
       </p>
-
       <div class="tech-stack">
         <span>Deep Learning</span>
         <span>Signal Processing</span>
