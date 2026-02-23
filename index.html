@@ -1055,6 +1055,71 @@ section {
   }
 
 }
+  /* ================= DARK MODE ================= */
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Dark Theme Variables */
+body.dark {
+  background: #0f172a;
+  color: #f1f5f9;
+}
+
+body.dark header {
+  background: #1e293b;
+}
+
+body.dark .project-card,
+body.dark .contact-form-box {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark .footer {
+  background: #0f172a;
+}
+
+body.dark .chatbox {
+  background: #1e293b;
+}
+
+body.dark nav a {
+  color: #f1f5f9;
+  
+}
+ /* Quick Option Buttons */
+.quick-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.quick-options button {
+  background: #fce7f3;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+.quick-options button:hover {
+  background: #ec4899;
+  color: white;
+}
+
+/* Dark mode support */
+body.dark .quick-options button {
+  background: #334155;
+  color: white;
+}
 </style>
 
 </head>
@@ -1069,6 +1134,7 @@ section {
     <div></div>
     <div></div>
   </div>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
   <nav id="navMenu">
     <a href="#home">Home</a>
@@ -1402,32 +1468,62 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
 <!-- CHATBOT -->
 
 <!-- CHATBOT -->
+<!-- CHATBOT TOGGLE BUTTON -->
 <div class="chat-toggle" onclick="toggleChat()">🤖</div>
 
+<!-- CHATBOT BOX -->
 <div class="chatbox" id="chatbox">
+
+  <!-- HEADER -->
   <div class="chat-header">
-    <span>🤖 Keerthana AI</span>
+    <span>🤖 Keerthana AI Assistant</span>
     <span style="cursor:pointer;" onclick="toggleChat()">✕</span>
   </div>
 
+  <!-- MESSAGES -->
   <div class="chat-messages" id="chatMessages">
+
+    <!-- Initial Bot Message -->
     <div class="bot-message">
       <div class="avatar">🤖</div>
       <div class="bubble">
-        Hey 👋 I'm Keerthana's AI. How can I help you today?
+        Hi 👋 I’m Keerthana’s AI assistant.  
+        You can ask me about:
       </div>
     </div>
+
+    <!-- Quick Suggestions -->
+    <div class="quick-options">
+      <button onclick="sendPreset('Tell me about your AI projects')">
+        🚀 AI Projects
+      </button>
+
+      <button onclick="sendPreset('What technologies do you use?')">
+        🛠 Tech Stack
+      </button>
+
+      <button onclick="sendPreset('Explain your architecture')">
+        🏗 Architecture
+      </button>
+
+      <button onclick="sendPreset('How can I contact you?')">
+        📩 Contact Info
+      </button>
+    </div>
+
   </div>
 
+  <!-- INPUT AREA -->
   <div class="chat-input">
     <input 
       type="text" 
       id="chatInput" 
-      placeholder="Ask about experience..."
+      placeholder="Ask about projects, skills, deployment..."
     />
     <button onclick="sendMessage()">Send</button>
   </div>
-</div>
+
+</div>>
  
 
 <script>
@@ -1499,6 +1595,21 @@ function sendMessage() {
 function toggleMenu(element) {
   document.getElementById("navMenu").classList.toggle("active");
   element.classList.toggle("open");
+}
+  function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const btn = document.querySelector(".theme-toggle");
+  if (document.body.classList.contains("dark")) {
+    btn.innerText = "☀️";
+  } else {
+    btn.innerText = "🌙";
+  }
+}
+
+  function sendPreset(text) {
+  document.getElementById("chatInput").value = text;
+  sendMessage();
 }
 </script>
 
