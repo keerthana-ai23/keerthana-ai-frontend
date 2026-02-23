@@ -913,6 +913,37 @@ section {
   }
 
 }
+  .hamburger.open div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open div:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+  @media (max-width: 768px) {
+
+  header nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+
+  header nav.active {
+    display: flex;
+  }
+
+}
 </style>
 </head>
 
@@ -921,7 +952,7 @@ section {
 <header>
   <h2>Keerthana Bellam</h2>
 
-  <div class="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" onclick="toggleMenu(this)">
     <div></div>
     <div></div>
     <div></div>
@@ -1330,10 +1361,11 @@ function sendMessage() {
   });
 }
 
-function toggleMenu() {
-  document.getElementById("navMenu").classList.toggle("active");
-}
 
+function toggleMenu(element) {
+  document.getElementById("navMenu").classList.toggle("active");
+  element.classList.toggle("open");
+}
 </script>
 
 </body>
