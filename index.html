@@ -499,6 +499,10 @@ section {
   gap: 15px;
   margin-bottom: 15px;
 }
+  .contact-wrapper {
+  display: flex;
+  gap: 80px;
+}
 
 .contact-form-box input,
 .contact-form-box textarea {
@@ -566,6 +570,7 @@ section {
   }
 
 }
+  
 /* CHATBOT */
 
 .chat-toggle {
@@ -861,6 +866,53 @@ section {
   }
 
 }
+  /* Hide hamburger on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: black;
+  transition: 0.3s;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  header {
+    padding: 15px 20px;
+  }
+
+  header nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  header nav.active {
+    display: flex;
+  }
+
+  header nav a {
+    margin: 12px 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+}
 </style>
 </head>
 
@@ -868,12 +920,18 @@ section {
 
 <header>
   <h2>Keerthana Bellam</h2>
-  <nav>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <nav id="navMenu">
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-   
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -886,23 +944,6 @@ section {
     <a href="https://github.com/keerthana-ai23" target="_blank" class="btn">GitHub</a> 
   </div> <img src="profile.jpeg" alt="Keerthana"> </section>
 
-<nav class="navbar">
-  <div class="logo">Keerthana Bellam</div>
-
-  <div class="hamburger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <ul class="nav-menu" id="navMenu">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
 
 <section class="about-section" id="about">
 
