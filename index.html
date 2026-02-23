@@ -533,6 +533,27 @@ section {
   background: #db2777;
   transform: translateY(-2px);
 }
+  @media (max-width: 768px) {
+
+  #contact {
+    padding: 40px 20px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+
+}
 /* CHATBOT */
 
 .chat-toggle {
@@ -735,6 +756,45 @@ section {
   html, body {
   overflow-x: hidden;
 }
+  /* Hide hamburger on desktop */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: black;
+  transition: 0.3s;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 20px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+}
 </style>
 </head>
 
@@ -760,7 +820,23 @@ section {
     <a href="https://github.com/keerthana-ai23" target="_blank" class="btn">GitHub</a> 
   </div> <img src="profile.jpeg" alt="Keerthana"> </section>
 
+<nav>
+  <div class="logo">Keerthana Bellam</div>
 
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
 <section class="about-section" id="about">
 
@@ -1146,6 +1222,15 @@ function sendMessage() {
     addBotMessage("⚠ Backend is not responding right now.");
   });
 }
+  <script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    menuToggle.classList.toggle("open");
+  });
+</script>
 </script>
 
 </body>
