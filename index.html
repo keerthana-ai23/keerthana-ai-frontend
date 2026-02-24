@@ -1347,6 +1347,44 @@ body.dark .chat-input button {
   background: #ec4899;
   color: white;
 }
+  /* ===============================
+   DARK MODE MOBILE MENU FIX
+================================ */
+
+body.dark header {
+  background: #0f172a;
+}
+
+body.dark header nav {
+  background: #111827;
+  border-top: 1px solid #1e293b;
+}
+
+body.dark header nav a {
+  color: #e2e8f0;
+}
+
+body.dark header nav a:hover {
+  color: #ec4899;
+}
+
+/* Mobile menu background */
+@media (max-width: 768px) {
+  body.dark header nav {
+    background: #111827;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+}
+
+/* Hamburger lines in dark */
+body.dark .hamburger div {
+  background: #f8fafc;
+}
+
+/* Close (X) button color */
+body.dark .hamburger.open div {
+  background: #f8fafc;
+}
 </style>
 
 </head>
